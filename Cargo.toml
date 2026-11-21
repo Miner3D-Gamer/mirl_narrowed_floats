@@ -1,0 +1,55 @@
+[package]
+name = "mirl_narrowed_floats"
+version = "0.0.0-alpha"
+edition = "2024"
+repository = "https://github.com/Miner3D-Gamer/mirl_mirl_narrowed_floats"
+license.workspace = true
+authors.workspace = true
+rust-version.workspace = true
+maintenance.workspace = true
+
+[features]
+_checking = [
+    "get_size2",
+    "serde",
+    "bitcode",
+    "wincode",
+    "compactly",
+    "zerocopy",
+    "f16",
+    "f128",
+]
+get_size2 = ["dep:get-size2"]
+serde = ["dep:serde"]
+bitcode = ["dep:bitcode"]
+wincode = ["dep:wincode"]
+compactly = ["dep:compactly"]
+zerocopy = ["dep:zerocopy"]
+f16 = []
+f128 = []
+
+[dependencies]
+mirl_extensions_math = { version = "0.0.0-alpha" }
+mirl_extensions_conversion = { version = "0.0.0-alpha" }
+mirl_extensions_core = { version = "0.0.0-alpha" }
+mirl_macros = { version = "0.0.0-alpha" }
+
+wincode = { version = "0.6", optional = true, features = ["derive"] }
+zerocopy = { version = "0.8", optional = true, default-features = false, features = [
+    "float-nightly",
+    "derive",
+] }
+serde = { version = "1.0", optional = true }
+bitcode = { version = "0.6", optional = true, default-features = false, features = [
+    "derive",
+] }
+compactly = { version = "0.2", optional = true }
+
+
+get-size2 = { version = "0.11", optional = true, features = ["derive"] }
+
+[build-dependencies]
+mirl_build_tools = { version = "0.0.0-alpha" }
+
+[lints]
+workspace = true
